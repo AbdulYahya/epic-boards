@@ -1,7 +1,9 @@
-export class Posts {
+export class Post {
   constructor(
-    public posterName: string,
-    public postedDate: Date,
-    public postContent: string
+    public poster: string,
+    public postedDate: string,
+    public postContent: string,
+    public topicId: number,
+    public id: number
   ) {}
 }

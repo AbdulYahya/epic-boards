@@ -1,0 +1,35 @@
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a routerLink="">Boards</a></li>
+    <li class="breadcrumb-item"><a href="" rel="nofollow">Topic</a></li>
+    <li class="breadcrumb-item active" aria-current="page">{{ topicToDisplay.title }}</li>
+  </ol>
+</nav>
+<div class="row">
+  <div class="col">
+    <div class="mb-4">
+      <div class="card-body">
+        <h5 class=card-title>{{ topicToDisplay.title }}</h5>
+      </div>
+      <small class="text-muted">{{ topicToDisplay.id }}</small>
+    </div>
+  </div>
+</div>
+
+<div class="album py-5 bg-light">
+  <div class="container">
+    <div class="row"  *ngFor="let post of posts">
+      <div class="col">
+        <div class="card box-shadow">
+          <div class="card-body">
+            <h6 class="card-subtitle mb-2 text-muted">{{ post.poster }} | posted on {{ post.postedDate }}</h6>
+            <p class="card-text">
+              {{ post.postContent }}
+            </p>
+            <p class="card-text"><small class="text-muted">{{ post.id }}</small></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

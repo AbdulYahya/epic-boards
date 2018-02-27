@@ -11,13 +11,14 @@ import { routing } from './app.routing';
 import { AppComponent } from './app.component';
 import { IndexComponent } from './index/index.component';
 import { BoardListTopicsComponent } from './board-list-topics/board-list-topics.component';
-
+import { TopicListPostsComponent } from './topic-list-posts/topic-list-posts.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     IndexComponent,
-    BoardListTopicsComponent
+    BoardListTopicsComponent,
+    TopicListPostsComponent
   ],
   imports: [
     BrowserModule,

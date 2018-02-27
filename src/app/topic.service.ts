@@ -13,15 +13,17 @@ export class TopicService {
     return TOPICS;
   }
 
+  getTopicByTitle(topicTitle: string) {
+    for (let topic in TOPICS) {
+      if (TOPICS[topic].title === topicTitle) return TOPICS[topic];
+    }
+  }
+
   getTopicsByBoardId(boardId: number) {
     this.topics = TOPICS.filter((topic, i, array) => {
-      // return topic;
       return (topic.boardId === boardId) ? topic : null;
     });
-    console.log(this.topics);
+
     return this.topics;
-    // for (let topic in TOPICS) {
-    //   if (TOPICS[topic].boardId === boardId) return TOPICS[topic];
-    // }
   }
 }

@@ -1,21 +1,37 @@
-
-<div class="card">
-  <div class="card-body">
-    <h5 class=card-title>{{ boardToDisplay.title }}</h5>
-    <p class="card-text text-muted">
-      {{ boardToDisplay.meta }}
-    </p>
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a routerLink="">Boards</a></li>
+    <li class="breadcrumb-item"><a href="" rel="nofollow">Board</a></li>
+    <li class="breadcrumb-item active" aria-current="page">{{ boardToDisplay.title }}</li>
+  </ol>
+</nav>
+<div class="row">
+  <div class="col">
+    <div class="mb-4">
+      <div class="card-body">
+        <h5 class=card-title>{{ boardToDisplay.title }}</h5>
+        <p class="card-text text-muted">
+          {{ boardToDisplay.meta }}
+        </p>
+      </div>
+      <small class="text-muted">{{ boardToDisplay.boardId }}</small>
+    </div>
   </div>
-  <small class="text-muted">{{ boardToDisplay.boardId }}</small>
 </div>
+<div class="album py-5 bg-light">
+  <div class="container">
+    <div class="row"  *ngFor="let topic of topics">
+      <div class="col">
+        <div class="card box-shadow" (click)="goToTopicPostList(topic)">
+          <div class="card-body">
+            <h5 class=card-title>{{ topic.title }}</h5>
+            <p class="card-text text-muted">
+              {{ topic.poster }}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
 
-
-<div class="card" *ngFor="let topic of topics">
-  <div class="card-body">
-    <h5 class=card-title>{{ topic.topicTitle }}</h5>
-    <p class="card-text text-muted">
-      {{ boardToDisplay.meta }}
-    </p>
   </div>
-  <small class="text-muted">{{ boardToDisplay.boardId }}</small>
 </div>

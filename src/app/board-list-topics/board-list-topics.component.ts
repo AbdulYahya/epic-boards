@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { Router, ActivatedRoute, Params } from '@angular/router';
 import { Location } from '@angular/common';
 
 import { Board } from '../board.model';
@@ -19,11 +19,12 @@ import { TopicService } from '../topic.service';
 })
 
 export class BoardListTopicsComponent implements OnInit {
-  boardTitle: string = null;
-  boardToDisplay: Board;
   topics: Topic[];
+  boardToDisplay: Board;
+  boardTitle: string = null;
 
   constructor(
+    private router: Router,
     private route: ActivatedRoute,
     private location: Location,
     private boardService: BoardService,
@@ -39,4 +40,7 @@ export class BoardListTopicsComponent implements OnInit {
     this.topics = this.topicService.getTopicsByBoardId(this.boardToDisplay.id);
   }
 
+  goToTopicPostList(clickedTopic: Topic) {
+    this.router.navigate(['boards/topic/', clickedTopic.title]);
+  }
 }

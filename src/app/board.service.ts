@@ -5,6 +5,8 @@ import { BOARDS } from './mock-boards';
 
 @Injectable()
 export class BoardService {
+  board: Board;
+
   constructor() { }
 
   getBoards() {
@@ -15,5 +17,6 @@ export class BoardService {
     for (let board in BOARDS) {
       if (BOARDS[board].title === boardTitle) return BOARDS[board];
     }
+
   }
 }
