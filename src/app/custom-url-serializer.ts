@@ -1,4 +1,4 @@
-import { DefaultUrlSerializer ,UrlTree } from '@angular/router';
+import { DefaultUrlSerializer, UrlTree } from '@angular/router';
 
 export class CustomUrlSerializer extends DefaultUrlSerializer {
   parse(url: string): UrlTree {

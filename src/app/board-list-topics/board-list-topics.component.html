@@ -1,3 +1,21 @@
-<p>
-  board-list-topics works!
-</p>
+
+<div class="card">
+  <div class="card-body">
+    <h5 class=card-title>{{ boardToDisplay.title }}</h5>
+    <p class="card-text text-muted">
+      {{ boardToDisplay.meta }}
+    </p>
+  </div>
+  <small class="text-muted">{{ boardToDisplay.boardId }}</small>
+</div>
+
+
+<div class="card" *ngFor="let topic of topics">
+  <div class="card-body">
+    <h5 class=card-title>{{ topic.topicTitle }}</h5>
+    <p class="card-text text-muted">
+      {{ boardToDisplay.meta }}
+    </p>
+  </div>
+  <small class="text-muted">{{ boardToDisplay.boardId }}</small>
+</div>
