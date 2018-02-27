@@ -6,5 +6,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app';
+  isCollapsed: boolean = true;
+  // $isCollapsed: boolean = true;
+  collapsed(event: any): void {
+    console.log(event);
+  }
+
+  expanded(event: any): void {
+    console.log(event);
+  }
 }
