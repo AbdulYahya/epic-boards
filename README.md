@@ -1,5 +1,18 @@
 # EpicBoard
 
+<!--             EPIC-BOARDS OUTLINE
+
+  * Only admin can create Boards
+  * Any user can create Topics/Posts
+  * When a user creates a Topic / Create a post with it - 'Original Post'
+
+  * Place New Board Modal only under 'admin'
+  * Place New Topic Modal only under 'boards/board/:boardTitle'
+  * Place New Post Form under the last post on the page only under 'boards/topic/:topicTitle'
+
+ -->
+
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.6.5.
 
 ## Development server

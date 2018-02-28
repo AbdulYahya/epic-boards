@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Location } from '@angular/common';
 
+import { Board } from './board.model';
 import { Topic } from '../topic.model';
 import { Post } from '../post.model';
 
@@ -21,6 +22,7 @@ import { PostService } from '../post.service';
 export class TopicListPostsComponent implements OnInit {
   posts: Post[];
   topicToDisplay: Topic;
+  boardTitle: string = null;
   topicTitle: string = null;
 
   constructor(
@@ -36,6 +38,8 @@ export class TopicListPostsComponent implements OnInit {
     });
 
     this.topicToDisplay = this.topicService.getTopicByTitle(this.topicTitle);
+    this.boardTitle = this.topicToDisplay.boardTitle;
+    console.log(this.boardTitle);
     this.posts = this.postService.getPostsByTopicId(this.topicToDisplay.id);
   }
 

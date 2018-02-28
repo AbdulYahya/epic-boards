@@ -11,6 +11,10 @@ const appRoutes: Routes = [
     component: IndexComponent
   },
   {
+    path: 'boards',
+    component: BoardListTopicsComponent
+  },
+  {
     path: 'boards/board/:title',
     component: BoardListTopicsComponent
   },
