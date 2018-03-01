@@ -2,10 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Location } from '@angular/common';
 
-import { Board } from './board.model';
+import { Board } from '../board.model';
 import { Topic } from '../topic.model';
 import { Post } from '../post.model';
 
+import { BoardService } from '../board.service';
 import { TopicService } from '../topic.service';
 import { PostService } from '../post.service';
 
@@ -14,6 +15,7 @@ import { PostService } from '../post.service';
   templateUrl: './topic-list-posts.component.html',
   styleUrls: ['./topic-list-posts.component.css'],
   providers: [
+    BoardService,
     TopicService,
     PostService
   ]
@@ -28,6 +30,7 @@ export class TopicListPostsComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private location: Location,
+    private boardService: BoardService,
     private topicService: TopicService,
     private postService: PostService
   ) { }
@@ -38,7 +41,8 @@ export class TopicListPostsComponent implements OnInit {
     });
 
     this.topicToDisplay = this.topicService.getTopicByTitle(this.topicTitle);
-    this.boardTitle = this.topicToDisplay.boardTitle;
+    let board = this.boardService.getBoardById(this.topicToDisplay.boardId);
+    this.boardTitle = board.title;
     console.log(this.boardTitle);
     this.posts = this.postService.getPostsByTopicId(this.topicToDisplay.id);
   }

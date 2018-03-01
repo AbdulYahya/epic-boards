@@ -13,10 +13,15 @@ export class BoardService {
     return BOARDS;
   }
 
+  getBoardById(boardId: number) {
+    for (let board in BOARDS) {
+      if (BOARDS[board].id === boardId) return BOARDS[board];
+    }
+  }
+
   getBoardByTitle(boardTitle: string) {
     for (let board in BOARDS) {
       if (BOARDS[board].title === boardTitle) return BOARDS[board];
     }
-
   }
 }
