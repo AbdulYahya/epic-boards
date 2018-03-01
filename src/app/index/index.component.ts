@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { FirebaseListObservable } from 'angularfire2/database';
 
 import { Board } from '../board.model';
 import { Topic } from '../topic.model';
@@ -14,7 +15,7 @@ import { BoardService } from '../board.service';
 })
 
 export class IndexComponent implements OnInit {
-  boards: Board[];
+  boards: FirebaseListObservable<Board[]>;
   topics: Topic[];
 
   constructor(private router: Router, private boardService: BoardService) { }
@@ -23,8 +24,8 @@ export class IndexComponent implements OnInit {
     this.boards = this.boardService.getBoards();
   }
 
-  goToBoardTopicListPage(clickedBoard: Board) {
-    this.router.navigate(['boards/board', clickedBoard.title]);
+  goToBoardTopicListPage(clickedBoard) {
+    this.router.navigate(['boards/board', clickedBoard.$key]);
   }
 
 

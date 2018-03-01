@@ -22,10 +22,10 @@ import { PostService } from '../post.service';
 })
 
 export class TopicListPostsComponent implements OnInit {
+  topicToDisplay;
   posts: Post[];
-  topicToDisplay: Topic;
-  boardTitle: string = null;
-  topicTitle: string = null;
+  boardId: string = null;
+  topicId: string = null;
 
   constructor(
     private route: ActivatedRoute,
@@ -37,15 +37,19 @@ export class TopicListPostsComponent implements OnInit {
 
   ngOnInit() {
     this.route.params.forEach((urlParameters) => {
-      this.topicTitle = urlParameters['title'];
+      this.topicId = urlParameters['id'];
     });
 
-    this.topicToDisplay = this.topicService.getTopicByTitle(this.topicTitle);
-    let board = this.boardService.getBoardById(this.topicToDisplay.boardId);
-    this.boardTitle = board.title;
-    console.log(this.boardTitle);
-    this.posts = this.postService.getPostsByTopicId(this.topicToDisplay.id);
+    this.topicToDisplay = this.topicService.getTopicsByBoardId(this.boardId);
+    // this.topicToDisplay = this.topicService.getTopicByTitle(this.topicTitle);
+    // let board = this.boardService.getBoardById(this.topicToDisplay.boardId);
+    // this.boardTitle = board.title;
+    console.log(this.boardId);
+    // this.posts = this.postService.getPostsByTopicId(this.topicToDisplay.id);
   }
 
+  // submitForm(title: string, poster: string, createdDate: string, boardId: string) {
+    // let newTopic:
+  // }
 
 }

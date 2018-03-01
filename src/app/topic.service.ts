@@ -1,29 +1,40 @@
 import { Injectable } from '@angular/core';
-
+import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 import { Topic } from './topic.model';
-import { TOPICS } from './mock-topics';
+
 
 @Injectable()
 export class TopicService {
-  topics: Topic[];
+  topics: FirebaseListObservable<Topic[]>;
 
-  constructor() { }
+  topic: Topic;
+
+  constructor(private db: AngularFireDatabase) {
+    this.topics = db.list('topics');
+  }
 
   getTopics() {
-    return TOPICS;
+    return this.topics;
   }
 
-  getTopicByTitle(topicTitle: string) {
-    for (let topic in TOPICS) {
-      if (TOPICS[topic].title === topicTitle) return TOPICS[topic];
-    }
+  addTopics(newTopic: Topic) {
+    this.topics.push(newTopic);
   }
 
-  getTopicsByBoardId(boardId: number) {
-    this.topics = TOPICS.filter((topic, i, array) => {
-      return (topic.boardId === boardId) ? topic : null;
+  getTopicById(topicId: string) {
+    return this.db.object('topics/' + topicId);
+  }
+
+  getTopicsByBoardId(boardId: string) {
+    let topicList = [];
+
+    this.topics.$ref.orderByChild("boardId").on("child_added", (snapshot) => {
+
+      if (snapshot.val().boardId === boardId) {
+        topicList.push(snapshot.val());
+      }
     });
 
-    return this.topics;
+    return topicList;
   }
 }
