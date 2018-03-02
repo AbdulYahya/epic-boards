@@ -40,11 +40,11 @@ export class TopicListPostsComponent implements OnInit {
       this.topicId = urlParameters['id'];
     });
 
-    this.topicToDisplay = this.topicService.getTopicsByBoardId(this.boardId);
+    // this.topicToDisplay = this.topicService.getTopicsByBoardId(this.boardId);
     // this.topicToDisplay = this.topicService.getTopicByTitle(this.topicTitle);
     // let board = this.boardService.getBoardById(this.topicToDisplay.boardId);
     // this.boardTitle = board.title;
-    console.log(this.boardId);
+    // console.log(this.boardId);
     // this.posts = this.postService.getPostsByTopicId(this.topicToDisplay.id);
   }
 
